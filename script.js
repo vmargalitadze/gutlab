@@ -1,3 +1,40 @@
+document.addEventListener('DOMContentLoaded', function() {
+    const documentItems = [
+        { id: 'license-download', pdf: 'pdf/1.pdf', name: 'Лицензия.pdf' },
+        { id: 'sanitary-download', pdf: 'pdf/2.pdf', name: 'Санитарное заключение.pdf' },
+        { id: 'price-download', pdf: 'pdf/3.pdf', name: 'Прайс для клиник и врачей.pdf' },
+        { id: 'loyalty-download', pdf: 'pdf/4.pdf', name: 'Программа лояльности.pdf' },
+        { id: 'order-form-download', pdf: 'pdf/5.pdf', name: 'Форма заказа наряда.pdf' }
+    ];
+    
+    documentItems.forEach(item => {
+        const element = document.getElementById(item.id);
+        
+        if (element) {
+            element.style.cursor = 'pointer';
+            
+            element.addEventListener('click', function() {
+                const link = document.createElement('a');
+                link.href = item.pdf;
+                link.download = item.name;
+                link.target = '_blank';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            });
+            
+            element.addEventListener('mouseenter', function() {
+                element.style.opacity = '0.8';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                element.style.opacity = '1';
+            });
+        }
+    });
+});
+
+
 document.addEventListener('DOMContentLoaded', function () {
     const burgerMenu = document.getElementById('burger-menu');
     const navContainer = document.getElementById('nav-container');
