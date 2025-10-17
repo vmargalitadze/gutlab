@@ -37,39 +37,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const beforeImage = document.querySelector('.before-image');
     const afterImage = document.querySelector('.after-image');
     const sliderHandle = document.querySelector('.slider-handle');
+    const leftArrow = document.querySelector('.nav-arrow-left');
+    const rightArrow = document.querySelector('.nav-arrow-right');
     
-    console.log('Elements found:', {
-        slider: !!slider,
-        beforeImage: !!beforeImage,
-        afterImage: !!afterImage,
-        sliderHandle: !!sliderHandle
-    });
+    // Image sets for before-after slider
+    const imageSets = [
+        { before: 'images/work/1.jpg', after: 'images/work/11.jpg' },
+        { before: 'images/work/2.jpg', after: 'images/work/22.jpg' },
+        { before: 'images/work/3.jpg', after: 'images/work/33.jpg' }
+    ];
     
-    // Log image sources
-    console.log('Before image source:', beforeImage.src);
-    console.log('After image source:', afterImage.src);
+    let currentImageSet = 0;
     
-    // Check image loading
-    beforeImage.addEventListener('load', () => {
-        console.log('✅ Before image (2.jpg) loaded successfully');
-        console.log('Before image dimensions:', beforeImage.naturalWidth, 'x', beforeImage.naturalHeight);
-    });
+    // Function to change images
+    function changeImageSet(direction) {
+        if (direction === 'left') {
+            currentImageSet = (currentImageSet - 1 + imageSets.length) % imageSets.length;
+        } else if (direction === 'right') {
+            currentImageSet = (currentImageSet + 1) % imageSets.length;
+        }
+        
+        const newSet = imageSets[currentImageSet];
+        beforeImage.src = newSet.before;
+        afterImage.src = newSet.after;
+        
+        // Reset slider to 50%
+        updateSlider(50);
+    }
     
-    beforeImage.addEventListener('error', () => {
-        console.log('❌ Before image (2.jpg) failed to load');
-    });
+    // Navigation arrow events
+    if (leftArrow) {
+        leftArrow.addEventListener('click', function() {
+            changeImageSet('left');
+        });
+    }
     
-    afterImage.addEventListener('load', () => {
-        console.log('✅ After image (1.jpg) loaded successfully');
-        console.log('After image dimensions:', afterImage.naturalWidth, 'x', afterImage.naturalHeight);
-    });
-    
-    afterImage.addEventListener('error', () => {
-        console.log('❌ After image (1.jpg) failed to load');
-    });
+    if (rightArrow) {
+        rightArrow.addEventListener('click', function() {
+            changeImageSet('right');
+        });
+    }
     
     if (!slider || !beforeImage || !sliderHandle) {
-        console.log('Slider elements not found');
         return;
     }
     
@@ -81,16 +90,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // გამოვიყენოთ clip-path სწორად
         beforeImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
         sliderHandle.style.left = percentage + '%';
-        
-        console.log('Slider updated to:', percentage + '%');
-        
-        if (percentage < 25) {
-            console.log('🔍 Currently showing mostly AFTER image (1.jpg)');
-        } else if (percentage > 75) {
-            console.log('🔍 Currently showing mostly BEFORE image (2.jpg)');
-        } else {
-            console.log('🔍 Currently showing both images mixed');
-        }
     }
     
     function getPosition(e) {
@@ -136,6 +135,5 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize at 50%
     updateSlider(50);
-    console.log('🎯 Slider initialized at 50% - should show both images');
 });
 
