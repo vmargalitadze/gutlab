@@ -1,5 +1,3 @@
-
-
 document.addEventListener('DOMContentLoaded', function () {
     const burgerMenu = document.getElementById('burger-menu');
     const navContainer = document.getElementById('nav-container');
@@ -13,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function () {
       document.body.style.overflow = navContainer.classList.contains('active') ? 'hidden' : '';
     });
   
-    // გარეთ დაკლიკებით დახურვა
     document.addEventListener('click', function (e) {
       if (!navContainer.contains(e.target) && !burgerMenu.contains(e.target)) {
         burgerMenu.classList.remove('active');
@@ -22,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   
-    // Escape ღილაკით დახურვა
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         burgerMenu.classList.remove('active');
@@ -31,12 +27,55 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
-// Equipment Items Interactive
+
+document.addEventListener('DOMContentLoaded', function() {
+    const phoneItems = document.querySelectorAll('.contact-item');
+    
+    phoneItems.forEach(item => {
+        const icon = item.querySelector('i');
+        const text = item.querySelector('span');
+        
+        if (icon && text) {
+            if (icon.classList.contains('fa-phone')) {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', function() {
+                    const phoneNumber = text.textContent.trim();
+                    const cleanNumber = phoneNumber.replace(/\s/g, '');
+                    window.open(`tel:${cleanNumber}`, '_self');
+                });
+                
+                item.addEventListener('mouseenter', function() {
+                    item.style.opacity = '0.8';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    item.style.opacity = '1';
+                });
+            }
+            
+            if (icon.classList.contains('fa-envelope')) {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', function() {
+                    const email = text.textContent.trim();
+                    window.open(`mailto:${email}`, '_self');
+                });
+                
+                item.addEventListener('mouseenter', function() {
+                    item.style.opacity = '0.8';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    item.style.opacity = '1';
+                });
+            }
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const equipmentItems = document.querySelectorAll('.equipment-item');
     const scannerInfo = document.querySelector('.scanner-info');
     
-    // Equipment data
     const equipmentData = {
         'sirona': {
             title: 'Системы Sirona позволяют внедрить полноценный цифровой цикл — от сканирования до готовой реставрации в клинике или лаборатории.',
@@ -98,7 +137,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
     
-    // Function to update scanner info
     function updateScannerInfo(equipmentType) {
         const data = equipmentData[equipmentType];
         if (!data || !scannerInfo) return;
@@ -112,18 +150,14 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
     
-    // Add click events to equipment items
     equipmentItems.forEach((item, index) => {
         item.addEventListener('click', function() {
-            // Remove active class from all items
             equipmentItems.forEach(el => el.classList.remove('equipment-item-active'));
             
-            // Add active class to clicked item
             item.classList.add('equipment-item-active');
             
-            // Determine equipment type based on content
             const title = item.querySelector('h3').textContent.toLowerCase();
-            let equipmentType = 'scanner'; // default
+            let equipmentType = 'scanner';
             
             if (title.includes('sirona')) {
                 equipmentType = 'sirona';
@@ -142,7 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Before/After Image Slider
 document.addEventListener('DOMContentLoaded', function() {
     const slider = document.querySelector('.before-after-slider');
     const beforeImage = document.querySelector('.before-image');
@@ -151,7 +184,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const leftArrow = document.querySelector('.nav-arrow-left');
     const rightArrow = document.querySelector('.nav-arrow-right');
     
-    // Image sets for before-after slider
     const imageSets = [
         { before: 'images/work/1.jpg', after: 'images/work/11.jpg' },
         { before: 'images/work/2.jpg', after: 'images/work/22.jpg' },
@@ -160,7 +192,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     let currentImageSet = 0;
     
-    // Function to change images
     function changeImageSet(direction) {
         if (direction === 'left') {
             currentImageSet = (currentImageSet - 1 + imageSets.length) % imageSets.length;
@@ -172,11 +203,9 @@ document.addEventListener('DOMContentLoaded', function() {
         beforeImage.src = newSet.before;
         afterImage.src = newSet.after;
         
-        // Reset slider to 50%
         updateSlider(50);
     }
     
-    // Navigation arrow events
     if (leftArrow) {
         leftArrow.addEventListener('click', function() {
             changeImageSet('left');
@@ -198,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateSlider(position) {
         const percentage = Math.max(0, Math.min(100, position));
         
-        // გამოვიყენოთ clip-path სწორად
         beforeImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
         sliderHandle.style.left = percentage + '%';
     }
@@ -209,7 +237,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return (x / rect.width) * 100;
     }
     
-    // Mouse events
     slider.addEventListener('mousedown', function(e) {
         isDragging = true;
         updateSlider(getPosition(e));
@@ -226,7 +253,6 @@ document.addEventListener('DOMContentLoaded', function() {
         isDragging = false;
     });
     
-    // Touch events for mobile
     slider.addEventListener('touchstart', function(e) {
         isDragging = true;
         updateSlider(getPosition(e.touches[0]));
@@ -244,7 +270,5 @@ document.addEventListener('DOMContentLoaded', function() {
         isDragging = false;
     });
     
-    // Initialize at 50%
     updateSlider(50);
 });
-
