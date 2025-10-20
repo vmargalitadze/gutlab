@@ -954,9 +954,11 @@
 .nav-arrow {
   width: 25px;
   height: 25px;
-  background-color: transparent;
+  background-color: #5b5b5b;
   border: none;
   cursor: pointer;
+  border-radius: 50%;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
