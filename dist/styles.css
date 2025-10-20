@@ -834,8 +834,8 @@
   }
   
   .features .feature-icon img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
   }
   
@@ -954,9 +954,11 @@
 .nav-arrow {
   width: 25px;
   height: 25px;
-  background-color: transparent;
+  background-color: #5b5b5b;
   border: none;
   cursor: pointer;
+  border-radius: 50%;
+  padding: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1238,7 +1240,7 @@
 
  
   .carousel-card img {
-    width: 300px;
+    width: 100%;
     height: 316px;
     object-fit: cover;
     display: block;
@@ -1251,16 +1253,29 @@
   }
 
   .carousel-arrow {
-    width: 42px;
-    height: 42px;
+    width: 50px;
+    height: 50px;
+    aspect-ratio: 1 / 1; /* enforce perfect circle */
     border-radius: 50%;
     border: none;
     background: #3ab5ab;
-    display: flex;
+    display: inline-flex; /* avoid UA button inline box quirks */
     align-items: center;
     justify-content: center;
     cursor: pointer;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 10px; 
+    line-height: 0; 
+    overflow: hidden; 
+    box-sizing: border-box;
+  }
+
+  .carousel-arrow img {
+    width: 55%;
+    height: 55%;
+    object-fit: contain;
+    display: block;
+    pointer-events: none; /* click goes to button */
   }
 
   @media (max-width: 1024px) {
