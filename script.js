@@ -34,6 +34,156 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// ===== Equipment Carousel =====
+document.addEventListener('DOMContentLoaded', function() {
+  const viewport = document.querySelector('.carousel-viewport');
+  const track = document.querySelector('.carousel-track');
+  const cards = document.querySelectorAll('.carousel-card');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  if (!viewport || !track || cards.length === 0) return;
+
+  let index = 0;
+  let cardsPerView = 3;
+
+  function computeCardsPerView() {
+    const w = viewport.clientWidth;
+    if (w <= 600) return 1;
+    if (w <= 1024) return 2;
+    return 3;
+  }
+
+  function update() {
+    cardsPerView = computeCardsPerView();
+    const gap = parseInt(getComputedStyle(track).gap) || 16;
+    const cardWidth = (viewport.clientWidth - gap * (cardsPerView - 1)) / cardsPerView;
+    cards.forEach(c => c.style.flexBasis = cardWidth + 'px');
+
+    const maxIndex = Math.max(0, cards.length - cardsPerView);
+    index = Math.min(index, maxIndex);
+    const offset = index * (cardWidth + gap);
+    track.style.transform = `translateX(${-offset}px)`;
+  }
+
+  function next() {
+    const maxIndex = Math.max(0, cards.length - cardsPerView);
+    index = Math.min(maxIndex, index + 1);
+    update();
+  }
+
+  function prev() {
+    index = Math.max(0, index - 1);
+    update();
+  }
+
+  nextBtn && nextBtn.addEventListener('click', next);
+  prevBtn && prevBtn.addEventListener('click', prev);
+
+  // Drag/Swipe
+  let isDown = false;
+  let startX = 0;
+  let startTransform = 0;
+
+  function currentTranslate() {
+    const m = /translateX\((-?\d+(?:\.\d+)?)px\)/.exec(track.style.transform || '');
+    return m ? parseFloat(m[1]) : 0;
+  }
+
+  viewport.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.clientX;
+    startTransform = currentTranslate();
+    e.preventDefault();
+  });
+
+  window.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${startTransform + dx}px)`;
+  });
+
+  window.addEventListener('mouseup', () => {
+    if (!isDown) return;
+    isDown = false;
+    track.style.transition = '';
+    // snap to nearest card
+    const gap = parseInt(getComputedStyle(track).gap) || 16;
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const offset = -currentTranslate();
+    index = Math.round(offset / (cardWidth + gap));
+    prev(); // clamp via update path, then step back to correct index
+    index = Math.max(0, index);
+    const maxIndex = Math.max(0, cards.length - cardsPerView);
+    index = Math.min(index, maxIndex);
+    update();
+  });
+
+  // Touch
+  viewport.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].clientX;
+    startTransform = currentTranslate();
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    const dx = e.touches[0].clientX - startX;
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${startTransform + dx}px)`;
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    if (!isDown) return;
+    isDown = false;
+    track.style.transition = '';
+    const gap = parseInt(getComputedStyle(track).gap) || 16;
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const offset = -currentTranslate();
+    index = Math.round(offset / (cardWidth + gap));
+    index = Math.max(0, index);
+    const maxIndex = Math.max(0, cards.length - cardsPerView);
+    index = Math.min(index, maxIndex);
+    update();
+  });
+
+  window.addEventListener('resize', update);
+  update();
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const consent = document.getElementById('consent');
+  const submitBtn = document.querySelector('.submit-btn');
+  if (!consent || !submitBtn) return;
+
+  function sync() {
+    submitBtn.disabled = !consent.checked;
+  }
+
+  consent.addEventListener('change', sync);
+  sync();
+});
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const video = document.getElementById('heroVideo');
+  const btn = document.querySelector('.hero-play');
+  if (!video || !btn) return;
+
+  function playVideo() {
+    if (video.paused) {
+      video.play();
+      btn.style.display = 'none';
+      video.setAttribute('controls', 'controls');
+    }
+  }
+
+  btn.addEventListener('click', playVideo);
+  video.addEventListener('play', () => btn.style.display = 'none');
+  video.addEventListener('pause', () => btn.style.display = '');
+});
+
 
 document.addEventListener('DOMContentLoaded', function () {
     const burgerMenu = document.getElementById('burger-menu');

@@ -82,7 +82,10 @@
                         </div>
                 </div>
                 <div class="hero-image">
-                    <img src="images/instruments.png" alt="Dental instruments">
+                    <video id="heroVideo" class="hero-video" preload="metadata" poster="images/instruments.png">
+                        <source src="video/IMG_8998.MOV" type="video/mp4">
+                    </video>
+                    <button class="play-button hero-play" aria-label="Play video"></button>
                 </div>
             </div>
         </div>
@@ -100,9 +103,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>Развитие</h3>
-                        <p>Используем современные технологии и ПО. Специалисты регулярно проходят обучение, чтобы
-                            предлагать
-                            актуальные решения</p>
+                        
                     </div>
                 </div>
 
@@ -113,7 +114,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>Точность</h3>
-                        <p>Контролируем сроки. Цифровые технологии сокращают время изготовления и сохраняют качество</p>
+                      
                     </div>
                 </div>
 
@@ -124,7 +125,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>Качество</h3>
-                        <p>Используем передовые технологии и оборудование мировых производителей для точной посадки</p>
+                      
                     </div>
                 </div>
 
@@ -135,7 +136,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>Гибкость</h3>
-                        <p>Для каждого заказчика подбираем выгодные условия сотрудничества</p>
+                    
                     </div>
                 </div>
 
@@ -146,7 +147,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>Доверие</h3>
-                        <p>Работаем только с проверенными материалами и надёжными поставщиками</p>
+                       
                     </div>
                 </div>
 
@@ -157,7 +158,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>Доставка</h3>
-                        <p>Доставляем вовремя и бережно. Все этапы доставки под контролем</p>
+                     
                     </div>
                 </div>
             </div>
@@ -185,14 +186,12 @@
                     <!-- Service 1 -->
                     <div class="service-item1">
                         <div class="service-text">
-                            <h3>Безметалловая керамика</h3>
+                            <h3>Тотальные работы</h3>
 
                             <button class="service-button">Подробнее</button>
                         </div>
-
-                        <p class="service-text-p">Современный материал, который является биосовместимым, прочным и
-                            эстетичным. Виниры из стеклокерамики позволяют исправить форму и цвет зубов без значительной
-                            обработки эмали.</p>
+                        <p class="service-text-p"></p>
+                       
                         <div class="service-image">
                             <img src="images/services/1.png" alt="Безметалловая керамика">
                         </div>
@@ -201,12 +200,10 @@
                     <!-- Service 2 -->
                     <div class="service-item">
                         <div class="service-text">
-                            <h3>Металлокерамика</h3>
+                            <h3>Коронки из диоксида циркония</h3>
                             <button class="service-button">Подробнее</button>
                         </div>
-                        <p class="service-text-p">Коронки и мостовидные протезы состоят из прочного металлического
-                            каркаса и керамического покрытия, имитирующего эмаль зуба. Долговечность 10-15 лет,
-                            стабильность цвета, восстановление жевательной функции.</p>
+                        <p class="service-text-p"></p>
                         <div class="service-image">
                             <img src="images/services/2.png" alt="Металлокерамика">
                         </div>
@@ -215,12 +212,10 @@
                     <!-- Service 3 -->
                     <div class="service-item">
                         <div class="service-text">
-                            <h3>Элайнеры, спортивные капы, бруксчекеры, сплинт</h3>
+                            <h3>Элайнеры</h3>
                             <button class="service-button">Подробнее</button>
                         </div>
-                        <p class="service-text-p">Современные индивидуальные изделия, изготовленные по слепкам или
-                            3D-моделям. Используются для коррекции прикуса, позиционирования зубов, защиты в спорте,
-                            лечения бруксизма и дисфункции ВНЧС.</p>
+                        <p class="service-text-p">Элайнеры, капы, сплинты и бруксчекер — индивидуальные изделия по слепкам или 3D-модели. Применяются для коррекции прикуса, защиты при спорте, лечения бруксизма и ВНЧС, диагностики нагрузок. Изготавливаются из прочных гипоаллергенных материалов, удобны, эстетичны и точно адаптируются под пациента.</p>
                         <div class="service-image">
                             <img src="images/services/3.png" alt="Элайнеры">
                         </div>
@@ -235,86 +230,39 @@
     <section class="equipment" id="equipment">
         <div class="container">
             <h2 class="equipment-title">Оборудование</h2>
-            <div class="equipment-content">
-                <div class="equipment-list">
-
-                    <div class="equipment-item">
-                        <div class="equipment-icon">
-                            <img src="images/item/2.png" alt="Sirona">
+          
+            <!-- Equipment Carousel -->
+            <div class="equipment-carousel">
+                <button class="carousel-arrow carousel-prev" aria-label="Previous">
+                    <img src="images/process/arrows_16550567 2.png" alt="prev">
+                </button>
+                <div class="carousel-viewport">
+                    <div class="carousel-track">
+                        <div class="carousel-card">
+                            <img src="images/item/1.png" alt="Erkoform 3D motion">
+                            <p class="carousel-caption">Erkoform 3D motion</p>
                         </div>
-                        <div class="equipment-text">
-                            <h3>Sirona</h3>
-                            <p>CAD/CAM системы, интраоральные сканеры и фрезерные станки для цифрового протезирования
-                            </p>
+                        <div class="carousel-card">
+                            <img src="images/item/2.png" alt="3D-принтер">
+                            <p class="carousel-caption">3D-принтер</p>
                         </div>
-                    </div>
-
-                    <div class="equipment-item">
-                        <div class="equipment-icon">
-                            <img src="images/item/3.png" alt="Halot">
+                        <div class="carousel-card">
+                            <img src="images/item/3.png" alt="Фрезерные станки">
+                            <p class="carousel-caption">Фрезерные станки</p>
                         </div>
-                        <div class="equipment-text">
-                            <h3>Halot</h3>
-                            <p>Стоматологическое оборудование для моделирования и обработки материалов</p>
+                        <div class="carousel-card">
+                            <img src="images/item/4.png" alt="Печь для синтеризации">
+                            <p class="carousel-caption">Печь для синтеризации</p>
                         </div>
-                    </div>
-
-                    <div class="equipment-item equipment-item-active">
-                        <div class="equipment-icon">
-                            <img src="images/item/4.png" alt="Интраоральные сканеры">
-                        </div>
-                        <div class="equipment-text">
-                            <h3>Интраоральные сканеры</h3>
-                            <p>Цифровое снятие слепков и замена традиционных оттисков</p>
-                        </div>
-                    </div>
-
-                    <div class="equipment-item">
-                        <div class="equipment-icon">
-                            <img src="images/item/5.png" alt="CAD/CAM ПО">
-                        </div>
-                        <div class="equipment-text">
-                            <h3>CAD/CAM-ПО</h3>
-                            <p>Программное обеспечение для цифрового дизайна улыбки, коронок, виниров, мостов</p>
-                        </div>
-                    </div>
-
-                    <div class="equipment-item">
-                        <div class="equipment-icon">
-                            <img src="images/item/6.png" alt="Пескоструйные аппараты">
-                        </div>
-                        <div class="equipment-text">
-                            <h3>Пескоструйные аппараты</h3>
-                            <p>Обработка металлических каркасов для улучшения адгезии керамики</p>
+                        <div class="carousel-card">
+                            <img src="images/item/5.png" alt="Печь для синтеризации">
+                            <p class="carousel-caption">Фрезерный станок</p>
                         </div>
                     </div>
                 </div>
-                <!-- Left Column - Equipment List -->
-
-                <div class="divider"></div>
-
-                <!-- Right Column - Scanner Details -->
-                <div class="scanner-details">
-                    <div class="scanner-image">
-                        <img src="images/item/1.png" alt="Интраоральный сканер">
-                    </div>
-
-                    <div class="scanner-info">
-                        <h3>Интраоральные сканеры позволяют заменить традиционные слепки на точное цифровое
-                            3D-сканирование полости рта</h3>
-
-                        <ul class="scanner-benefits">
-                            <li>Точность и комфорт — быстрое и безболезненное снятие формы зубов</li>
-                            <li>Цветное 3D-изображение — мгновенный результат для врача и техника</li>
-                            <li>Быстрая передача данных — слепок мгновенно отправляется на моделирование</li>
-                            <li>Интеграция с CAD/CAM — сканы напрямую используются для коронок, виниров, мостов,
-                                колпачков</li>
-                        </ul>
-
-                        <p class="scanner-conclusion">Преимущества: скорость, комфорт, отсутствие ошибок, которые бывают
-                            при обычных слепках.</p>
-                    </div>
-                </div>
+                <button class="carousel-arrow carousel-next" aria-label="Next">
+                    <img src="images/process/arrows_165505673 .png" alt="next">
+                </button>
             </div>
         </div>
     </section>
@@ -371,7 +319,7 @@
         <div class="container">
             <div class="doctors-work-content">
                 <div class="doctors-work-text">
-                    <h2 class="monserrat-text">Работы врачей</h2>
+                    <h2 class="monserrat-text">Работы лаборатории</h2>
                     <p>Пациентка 30 лет обратилась к нам с жалобами на неровное положение зубов и отсутствие части
                         зубного ряда. Ортопедический план включал имплантацию и восстановление утраченных зубов, а также
                         улучшение эстетики улыбки с помощью виниров. Для того чтобы это стало возможным, сначала
@@ -514,14 +462,13 @@
     </section>
 
   
-    
-    <!-- Contact Form Section -->
+   
     <section class="contact-form" id="contact">
         <div class="contact-content">
             
             <div class="contact-text">
                 <h2>Свяжитесь с нами удобным способом</h2>
-                <p>Свяжитесь с нами удобным для вас способом – мы всегда на связи и готовы помочь.</p>
+                <p>Мы всегда на связи и готовы помочь. Мы всегда на связи и готовы помочь. Пожалуйста, укажите ваше имя и телефон. Заявка будет отправлена только при корректно заполненных полях.</p>
             </div>
             <form class="contact-form-container">
                 <div class="form-group">
@@ -532,22 +479,26 @@
                     <input type="tel" id="phone" name="phone" placeholder="Телефон" required>
                     <div class="error-message" id="phone-error">Данные введены не верно!</div>
                 </div>
+                <div class="form-consent">
+                    <input type="checkbox" id="consent" name="consent" />
+                    <label for="consent">Я подтверждаю своё согласие на обработку персональных данных в соответствии с <a href="#" class="privacy-link">Политикой конфиденциальности</a>.</label>
+                </div>
                 
-                <button type="submit" class="submit-btn">Оставить заявку</button>
+                <button type="submit" class="submit-btn" disabled>Оставить заявку</button>
             </form>
         </div>
         
      
     </section>
 
-    <!-- Footer -->
+  
     <footer class="footer">
    
       
         <div class="container footer-content">
-          <!-- Logo Section -->
+        
           <div class="footer-logo">
-            <img src="images/1.png" alt="Guten Lab logo" class="footer-logo-img" />
+            <img src="images/логотип белый с подписью 1.png" alt="Guten Lab logo" class="footer-logo-img" />
             
           </div>
       
@@ -580,6 +531,10 @@
             <div class="legal-item">
               <img src="images/paper2.png" alt="Paper" />
               <a href="#">Согласие на обработку персональных данных</a>
+            </div>
+            <div class="legal-item"> 
+                <img src="images/paper2.png" alt="Paper" />
+                <a href="#">Санитарное заключение</a>
             </div>
             <p>© 2025, «000 «Гутен ЛАБ»</p>
           </div>

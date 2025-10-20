@@ -1,0 +1,11 @@
+{
+  "name": "gutlab-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static site build for gutlab",
+  "scripts": {
+    "build": "node build.js",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\""
+  }
+}
+
