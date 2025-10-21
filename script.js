@@ -167,32 +167,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-  const video = document.getElementById('heroVideo');
+  const iframe = document.getElementById('heroVideo');
   const btn = document.querySelector('.hero-play');
-  if (!video || !btn) return;
+  if (!iframe || !btn) return;
+
+  let isPlaying = true; // Assume autoplay starts playing
 
   function toggleVideo() {
-    if (video.paused) {
-      video.play();
-      btn.style.display = 'none';
-    } else {
-      video.pause();
+    if (isPlaying) {
+      // Pause by reloading iframe without autoplay
+      iframe.src = iframe.src.replace('?autoplay=1', '');
       btn.style.display = 'flex';
+      isPlaying = false;
+    } else {
+      // Play by reloading iframe with autoplay
+      iframe.src = iframe.src.includes('?') ? 
+        iframe.src.replace('?', '?autoplay=1&') : 
+        iframe.src + '?autoplay=1';
+      btn.style.display = 'none';
+      isPlaying = true;
     }
   }
 
   function playVideo() {
-    if (video.paused) {
-      video.play();
+    if (!isPlaying) {
+      iframe.src = iframe.src.includes('?') ? 
+        iframe.src.replace('?', '?autoplay=1&') : 
+        iframe.src + '?autoplay=1';
       btn.style.display = 'none';
-      video.setAttribute('controls', 'controls');
+      isPlaying = true;
     }
   }
 
   btn.addEventListener('click', playVideo);
-  video.addEventListener('click', toggleVideo);
-  video.addEventListener('play', () => btn.style.display = 'none');
-  video.addEventListener('pause', () => btn.style.display = 'flex');
+  iframe.addEventListener('click', toggleVideo);
 });
 
 
