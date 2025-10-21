@@ -171,6 +171,16 @@ document.addEventListener('DOMContentLoaded', function() {
   const btn = document.querySelector('.hero-play');
   if (!video || !btn) return;
 
+  function toggleVideo() {
+    if (video.paused) {
+      video.play();
+      btn.style.display = 'none';
+    } else {
+      video.pause();
+      btn.style.display = '';
+    }
+  }
+
   function playVideo() {
     if (video.paused) {
       video.play();
@@ -180,6 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   btn.addEventListener('click', playVideo);
+  video.addEventListener('click', toggleVideo);
   video.addEventListener('play', () => btn.style.display = 'none');
   video.addEventListener('pause', () => btn.style.display = '');
 });
