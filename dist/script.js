@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
       btn.style.display = 'none';
     } else {
       video.pause();
-      btn.style.display = '';
+      btn.style.display = 'flex';
     }
   }
 
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
   btn.addEventListener('click', playVideo);
   video.addEventListener('click', toggleVideo);
   video.addEventListener('play', () => btn.style.display = 'none');
-  video.addEventListener('pause', () => btn.style.display = '');
+  video.addEventListener('pause', () => btn.style.display = 'flex');
 });
 
 

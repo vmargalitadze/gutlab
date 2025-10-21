@@ -733,7 +733,7 @@
     height: 72px;
     background: #4E484A; /* requested bg */
     border-radius: 50%;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     cursor: pointer;
