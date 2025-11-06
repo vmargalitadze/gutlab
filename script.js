@@ -3,22 +3,22 @@ document.addEventListener("DOMContentLoaded", function () {
     { id: "license-download", pdf: "pdf/1.pdf", name: "Лицензия.pdf" },
     {
       id: "sanitary-download",
-      pdf: "pdf/2.pdf",
+      pdf: "pdf/4.pdf",
       name: "Санитарное заключение.pdf",
     },
     {
       id: "price-download",
-      pdf: "pdf/3.pdf",
+      pdf: "pdf/2.pdf",
       name: "Прайс для клиник и врачей.pdf",
     },
     {
       id: "loyalty-download",
-      pdf: "pdf/4.pdf",
+      pdf: "pdf/5.pdf",
       name: "Программа лояльности.pdf",
     },
     {
       id: "order-form-download",
-      pdf: "pdf/5.pdf",
+      pdf: "pdf/3.pdf",
       name: "Форма заказа наряда.pdf",
     },
   ];
