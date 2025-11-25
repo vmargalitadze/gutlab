@@ -1,0 +1,345 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+ :root {
+    --price-bg: #f8f9fb;
+    --price-card: #606166;
+    --price-card-hover: #6d6e73;
+    --price-panel: #ffffff;
+    --price-text-muted: rgba(255, 255, 255, 0.7);
+    --price-border: rgba(255, 255, 255, 0.18);
+}
+
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+}
+
+.price-text{
+    text-align: right;
+    padding: 60px 20px 60px 40px;
+    width: 40%;
+    flex-shrink: 0;
+    
+  
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+  
+    align-items: flex-end;
+    position: relative;
+  }
+  .price-text h2 {
+    font-family: "Montserrat", Arial, sans-serif;
+    font-size: 36px;
+    text-align: right;
+    width: 410px;
+    font-weight: 400;
+    font-style: normal;
+  
+    line-height: 100%;
+ 
+  }
+
+
+
+
+.price-page {
+    background: var(--price-bg);
+}
+
+.price-section {
+    padding: 140px 0 100px;
+}
+
+.price-intro {
+    max-width: 620px;
+    margin-bottom: 48px;
+}
+
+.price-intro-title {
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: rgba(78, 72, 74, 1);
+    font-family: "Montserrat", Arial, sans-serif;
+    font-style: regular;
+}
+
+.section-tag {
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 12px;
+    color: #9698a2;
+    margin-bottom: 12px;
+}
+
+.section-lead {
+    color: #4f5059;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.price-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.price-item {
+    background: var(--price-card);
+    border-radius: 18px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.price-item:hover {
+    transform: translateY(-2px);
+    background: var(--price-card-hover);
+}
+
+.price-item-trigger {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 28px;
+    font-size: 20px;
+    font-weight: 500;
+    cursor: pointer;
+
+    
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+.hero-button-link{
+    text-decoration: none;
+}
+
+.price-item-number {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 254, 254, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.price-item-title {
+    flex: 1;
+    text-align: left;
+    font-size: 24px;
+    color: rgba(255, 255, 255, 1);
+    font-weight: 600;
+    font-family: "Montserrat", Arial, sans-serif;
+    font-style: semibold !important;
+}
+
+.price-item-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 254, 254, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.price-item-icon::before,
+.price-item-icon::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 2px;
+    background: rgba(58, 181, 171, 1);
+
+    ;
+    transition: transform 0.3s ease;
+}
+
+.price-item-icon::after {
+    transform: rotate(90deg);
+}
+
+.price-item-trigger[aria-expanded="true"] .price-item-icon::after {
+    transform: rotate(90deg) scaleX(0);
+}
+
+.price-item-panel {
+    background: var(--price-panel);
+
+    border-radius: 14px;
+    border: 1px solid rgba(202, 195, 195, 1);
+   
+    color: #35363f;
+}
+
+.price-table {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.price-table-head,
+.price-table-row {
+    display: grid;
+    grid-template-columns: 90px 1.6fr 1.2fr 120px 130px;
+    gap: 16px;
+    align-items: center;
+    border: 1px solid #eceef4;
+
+    padding: 16px 22px;
+}
+
+.price-table-head {
+    background: #f4f5f7;
+    color: #6d6f77;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.price-table-row {
+    background: #ffffff;
+    font-size: 15px;
+    box-shadow: 0 6px 16px rgba(19, 28, 64, 0.05);
+   
+}
+
+.price-code {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.price-title p {
+    margin: 0;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+
+
+.price-notes {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.price-cost {
+    font-weight: 400;
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Roboto Condensed", sans-serif;
+    text-align: right;
+}
+
+.price-counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #dde0e9;
+    border-radius: 999px;
+    padding: 6px 14px;
+}
+
+.counter-btn {
+    width: 28px;
+    height: 28px;
+background-color: transparent;
+    border: none;
+    color: rgba(202, 195, 195, 1);
+   
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+
+
+.counter-value {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Roboto Condensed", sans-serif;
+    min-width: 16px;
+    text-align: center;
+    color: rgba(0, 0, 0, 1);
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+@media (max-width: 768px) {
+    .price-section {
+        padding: 110px 0 80px;
+    }
+
+    .price-item-trigger {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 24px;
+        font-size: 18px;
+        justify-content: space-between;
+    }
+
+    .price-item-title {
+        flex: 0 0 100%;
+        order: 3;
+        font-size: 18px;
+    }
+
+    .price-item-panel {
+        margin: 0 16px 20px;
+        padding: 20px 22px;
+    }
+
+    .price-table-head,
+    .price-table-row {
+        grid-template-columns: 70px 1.4fr;
+        grid-template-rows: auto auto auto;
+        row-gap: 10px;
+    }
+
+    .price-table-head span:nth-child(3),
+    .price-table-head span:nth-child(4),
+    .price-table-head span:nth-child(5) {
+        display: none;
+    }
+
+    .price-table-row {
+        grid-template-areas:
+            "code title"
+            "notes notes"
+            "price counter";
+    }
+
+    .price-code {
+        grid-area: code;
+    }
+
+    .price-title {
+        grid-area: title;
+    }
+
+    .price-notes {
+        grid-area: notes;
+    }
+
+    .price-cost {
+        grid-area: price;
+        text-align: left;
+    }
+
+    .price-counter {
+        grid-area: counter;
+        justify-content: flex-start;
+    }
+}
+
